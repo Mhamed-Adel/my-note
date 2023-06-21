@@ -45,8 +45,9 @@ dependencies:
   lottie: ^2.4.0
   path: ^1.8.3
   shared_preferences: ^2.1.2
-
 dev_dependencies:
+  flutter_native_splash: ^2.3.0
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -56,16 +57,28 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  
+flutter_native_splash:
+  color: '#ffffff'
+  color_dark: "#121212"
+  image: assets/notepad.png
+android_12:
+  color: '#ffffff'
+  color_dark: "#121212"
+  image: assets/notepad.png
 
+  
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/notepad.png"
+  min_sdk_android: 19
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:

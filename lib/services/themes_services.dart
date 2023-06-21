@@ -23,6 +23,14 @@ class ThemeHelper {
       shape: CircleBorder(),
       iconSize: 35
     )
+  ,
+  primaryColor: Colors.blue,
+  textTheme: const TextTheme(
+        displaySmall: TextStyle(
+          fontSize: 25,
+          color: Colors.black,
+          fontWeight: FontWeight.w500
+        ))
   );
 
   final dark = ThemeData.dark(
@@ -39,11 +47,22 @@ class ThemeHelper {
         
       ),
       
+      
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: Color.fromARGB(255, 90, 223, 210),
       iconSize: 35
-    )
+    ),
+      primaryColor: Colors.blue,
+      textTheme: const TextTheme(
+        displaySmall: TextStyle(
+          fontSize: 25,
+          color: Colors.white,
+          fontWeight: FontWeight.w500,
+          
+        )
+      )
+  
   );
   
   MyServices myServices = Get.find();
@@ -54,7 +73,7 @@ class ThemeHelper {
     return myServices.sharedPref.getBool('isDark') ?? false;
   }
 
-  ThemeMode get theme => _getThemeMode() ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get theme => _getThemeMode()  ? ThemeMode.dark : ThemeMode.light;
 
   void switchTheme() {
     Get.changeThemeMode(_getThemeMode() ? ThemeMode.light : ThemeMode.dark);

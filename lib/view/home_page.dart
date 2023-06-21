@@ -18,20 +18,21 @@ class HomePage extends StatelessWidget {
 
   HomePage({super.key});
 
-  Widget emptyNotes() {
+  Widget emptyNotes(context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Lottie.asset('assets/making-notes.json',)),
           const SizedBox(height: 50,),
-          const Expanded(
+           Expanded(
             flex: 1,
             child: Text(
-              "You don't have any Notes",style: TextStyle(
-              fontSize: 30,fontWeight: FontWeight.bold
-            ),
+              
+              "You don't have any Notes",
+              textAlign: TextAlign.center,
+              style:Theme.of(context).textTheme.displaySmall,
             ),
           ),
         ],
@@ -194,7 +195,7 @@ class HomePage extends StatelessWidget {
         systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: GetBuilder<NoteController>(
-        builder: (_) => controller.isEmpty() ? viewNotes() : emptyNotes(),
+        builder: (_) => controller.isEmpty() ? emptyNotes(context) : viewNotes(),
       ),
       floatingActionButton: FloatingActionButton(
         
