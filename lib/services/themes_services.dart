@@ -4,8 +4,7 @@ import 'package:my_note/services/services.dart';
 
 class ThemeHelper {
 
-  final light = ThemeData.light(
-    useMaterial3: true
+  final light = ThemeData.light(useMaterial3: true
   ).copyWith(
     appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
@@ -13,24 +12,27 @@ class ThemeHelper {
       fontWeight: FontWeight.bold,
       fontSize: 25
     ),
-    actionsIconTheme: IconThemeData(
+    iconTheme: IconThemeData(
         color: Colors.black,
         
       ),
+      elevation: 0.0,
+      backgroundColor: Colors.white60
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: Color.fromARGB(255, 90, 223, 210),
       shape: CircleBorder(),
       iconSize: 35,
       
-    )
-  ,
-  primaryColor: Colors.teal,
+    ),
+  scaffoldBackgroundColor:  Colors.white70,
+   colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: Colors.cyan
+   )
+   
   
   );
 
-  final dark = ThemeData.dark(
-    useMaterial3: false
+  final dark = ThemeData.dark(useMaterial3: true
   ).copyWith(
   appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(
@@ -38,18 +40,20 @@ class ThemeHelper {
         fontWeight: FontWeight.bold,
         fontSize: 25
       ),
-      actionsIconTheme: IconThemeData(
+      iconTheme: IconThemeData(
         color: Colors.white,
         
       ),
       
+      color: Color.fromARGB(255, 57, 57, 57)
       
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: Color.fromARGB(255, 90, 223, 210),
       iconSize: 35
     ),
-      primaryColor: Colors.teal,
+ colorScheme: ColorScheme.fromSwatch(
+    primarySwatch: Colors.cyan
+   )
   
   
   );

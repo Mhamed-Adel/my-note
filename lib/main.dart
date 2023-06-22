@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(ChangeLocal());
     MyServices myServices = Get.find();
-    Locale intialLang = myServices.sharedPref.getString('lang') == 'ar' ? const Locale('ar') : const Locale('en');
+    Locale intialLang = myServices.sharedPref.getString('lang') == null ? Get.deviceLocale! : Locale(myServices.sharedPref.getString('lang')!);
     return GetMaterialApp(
       
       debugShowCheckedModeBanner: false,

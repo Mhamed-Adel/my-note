@@ -33,12 +33,7 @@ class AddNewNotePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineMedium,
                 decoration: InputDecoration(
                   hintText: "10".tr,
-                   hintStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[600],
-                    letterSpacing: 1
-                   ),
+                   hintStyle: Theme.of(context).textTheme.headlineMedium!,
                    //TextStyle(
                   //   fontSize: 27,
                   //   fontWeight: FontWeight.bold,
@@ -49,16 +44,19 @@ class AddNewNotePage extends StatelessWidget {
 
                 ),
               ),
+               Divider(
+                color: Colors.cyan[900],
+                thickness: 1,
+              ),
               TextField(
+                
                 style: const TextStyle(
                   fontSize: 22,
                 ),
                 controller: controller.contentController,
                 decoration:  InputDecoration(
                   hintText: "11".tr,
-                  hintStyle:const TextStyle(
-                    fontSize: 22,
-                  ),
+                  hintStyle: Theme.of(context).textTheme.headlineSmall!,
                   border: InputBorder.none,
                 ),
                 keyboardType: TextInputType.multiline,

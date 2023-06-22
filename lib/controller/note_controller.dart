@@ -25,14 +25,13 @@ class NoteController extends GetxController {
     getAllNotes();
     super.onInit();
   }
-
-  bool isEmpty() {
+  bool isLoading = false;
+bool isEmpty() {
     if (notes.isEmpty) {
       return true;
     } else {
       return false;
     }
-    
   }
 
   void addNoteToDatabase() async {
@@ -94,7 +93,9 @@ class NoteController extends GetxController {
   }
 
   void getAllNotes() async {
+    isLoading = true;
     notes = await DatabaseHelper.instance.getNoteList();
+    isLoading = false;
     update();
   }
 

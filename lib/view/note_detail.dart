@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../controller/note_controller.dart';
@@ -55,10 +54,11 @@ class NoteDetailPage extends StatelessWidget {
                               return AlertDialogWidget(
                                 contentText:
                                     "13".tr,
+                                    
                                 confirmFunction: () {
                                   controller
                                       .deleteNote(controller.notes[i!].id!);
-                                  Get.offAll(HomePage());
+                                  Get.offAll(()=>HomePage());
                                 },
                                 declineFunction: () {
                                   Get.back();
@@ -179,14 +179,9 @@ class NoteDetailPage extends StatelessWidget {
                   SelectableText(controller.notes[i!].title!,
                       style: Theme.of(context)
                           .textTheme
-                          .headlineMedium!
-                          .copyWith(
-                              color: Get.isDarkMode
-                                  ? Colors.grey[300]
-                                  : Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 27,
-                              letterSpacing: 1)),
+                          .headlineMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          )),
                   const SizedBox(
                     height: 15,
                   ),
@@ -203,9 +198,7 @@ class NoteDetailPage extends StatelessWidget {
                   ),
                   SelectableText(
                     controller.notes[i].content!,
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        color: Get.isDarkMode ? Colors.grey[300] : Colors.black,
-                        fontWeight: FontWeight.normal),
+                    style: Theme.of(context).textTheme.headlineSmall!
                   ),
                   const SizedBox(
                     height: 10,

@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 
 class Localization extends Translations {
   @override
-  // TODO: implement keys
+  
   Map<String, Map<String, String>> get keys =>{
     'ar' :{
       '1' : 'الصفحة الرئيسية',
@@ -20,8 +20,8 @@ class Localization extends Translations {
       '13' : 'هل تريد حذف هذه النوته؟ ',
       '14' : 'حذف',
       '15' : 'مشاركة',
-      '16':': عدد حروف النوته',
-      '17' : 'عدد الكلمات ',
+      '16':'عدد حروف النوته:',
+      '17' : 'عدد الكلمات:',
       '18':'اخر تعديل تم',
       '19':'بدون عنوان',
       '20':'نعم',

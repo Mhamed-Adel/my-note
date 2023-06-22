@@ -15,6 +15,7 @@ class AlertDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      //backgroundColor: Get.isDarkMode ? Color.fromARGB(255, 161, 32, 32):const Color.fromARGB(255, 88, 62, 62),
       content: Text(
         contentText!,
       ),
