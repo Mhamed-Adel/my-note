@@ -13,8 +13,8 @@ class AddNewNotePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "Add New Note",
+        title:  Text(
+          "9".tr,
           
         ),
        
@@ -30,18 +30,21 @@ class AddNewNotePage extends StatelessWidget {
             children: [
               TextField(
                 controller: controller.titleController,
-                style: const TextStyle(
-                  fontSize: 27,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.headlineMedium,
                 decoration: InputDecoration(
-                  hintText: "Title",
-                  hintStyle: TextStyle(
+                  hintText: "10".tr,
+                   hintStyle: Theme.of(context).textTheme.headlineMedium!.copyWith(
                     fontSize: 27,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey[600],
-                    letterSpacing: 1,
-                  ),
+                    letterSpacing: 1
+                   ),
+                   //TextStyle(
+                  //   fontSize: 27,
+                  //   fontWeight: FontWeight.bold,
+                  //   color: Colors.grey[600],
+                  //   letterSpacing: 1,
+                  // ),
                   border: InputBorder.none,
 
                 ),
@@ -51,9 +54,9 @@ class AddNewNotePage extends StatelessWidget {
                   fontSize: 22,
                 ),
                 controller: controller.contentController,
-                decoration: const InputDecoration(
-                  hintText: "Content",
-                  hintStyle: TextStyle(
+                decoration:  InputDecoration(
+                  hintText: "11".tr,
+                  hintStyle:const TextStyle(
                     fontSize: 22,
                   ),
                   border: InputBorder.none,
@@ -69,8 +72,9 @@ class AddNewNotePage extends StatelessWidget {
         onPressed: () {
           controller.addNoteToDatabase();
         },
-        child: const Icon(
+        child:  Icon(
           Icons.check,
+          color: Colors.grey[200],
         ),
       ),
     );

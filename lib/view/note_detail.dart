@@ -7,8 +7,6 @@ import '../widgets/alert_dialog.dart';
 import 'edit_note.dart';
 import 'home_page.dart';
 
-
-
 class NoteDetailPage extends StatelessWidget {
   final NoteController controller = Get.find();
 
@@ -19,8 +17,8 @@ class NoteDetailPage extends StatelessWidget {
     final int? i = ModalRoute.of(context)!.settings.arguments as int?;
     return Scaffold(
       appBar: AppBar(
-        centerTitle:true,
-        title: const Text('Edit'),
+        centerTitle: true,
+        title: Text('12'.tr),
         actions: [
           IconButton(
             icon: const Icon(
@@ -39,22 +37,27 @@ class NoteDetailPage extends StatelessWidget {
             ),
             onPressed: () {
               Get.bottomSheet(
+                backgroundColor: Get.isDarkMode
+                    ? const Color.fromARGB(137, 107, 106, 106)
+                    : Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16)),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: TextButton(
-
                         onPressed: () {
                           showDialog(
                             context: context,
                             builder: (context) {
                               return AlertDialogWidget(
                                 contentText:
-                                    "Are you sure you want to delete the note?",
+                                    "13".tr,
                                 confirmFunction: () {
-                                  controller.deleteNote(controller.notes[i!].id!);
+                                  controller
+                                      .deleteNote(controller.notes[i!].id!);
                                   Get.offAll(HomePage());
                                 },
                                 declineFunction: () {
@@ -64,20 +67,20 @@ class NoteDetailPage extends StatelessWidget {
                             },
                           );
                         },
-                        child: const Row(
+                        child:  Row(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.delete,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Text(
-                              "Delete",
-                              style: TextStyle(
+                              "14".tr,
+                              style: const TextStyle(
                                 fontSize: 20,
                               ),
                             ),
@@ -88,27 +91,26 @@ class NoteDetailPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: TextButton(
-
                         onPressed: () {
                           controller.shareNote(
                             controller.notes[i!].title!,
                             controller.notes[i].content!,
                           );
                         },
-                        child: const Row(
+                        child:  Row(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.share,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 20,
                             ),
                             Text(
-                              "Share",
-                              style: TextStyle(
+                              "15".tr,
+                              style: const TextStyle(
                                 fontSize: 20,
                               ),
                             ),
@@ -126,44 +128,39 @@ class NoteDetailPage extends StatelessWidget {
                         children: [
                           Text(
                             "Created :  ${controller.notes[i!].dateTimeCreated!}",
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall!
+                                .copyWith(fontSize: 20),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           Text(
-                            "Content Word Count :  ${controller.contentWordCount}",
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            '16'.tr+controller.contentWordCount.toString(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall!
+                                .copyWith(fontSize: 18),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           Text(
-                            "Content Character Count :  ${controller.contentCharCount}",
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          
-                          
-                          
+                              "17".tr+controller.contentCharCount.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displaySmall!
+                                  .copyWith(fontSize: 18)),
                         ],
                       ),
                     ),
                   ],
                 ),
-                backgroundColor: Colors.white,
               );
             },
           ),
-        ], systemOverlayStyle: SystemUiOverlayStyle.dark,
+        ],
       ),
       body: GetBuilder<NoteController>(
         builder: (_) => Scrollbar(
@@ -179,18 +176,22 @@ class NoteDetailPage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  SelectableText(
-                    controller.notes[i!].title!,
-                    style: const TextStyle(
-                      fontSize: 27,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
+                  SelectableText(controller.notes[i!].title!,
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineMedium!
+                          .copyWith(
+                              color: Get.isDarkMode
+                                  ? Colors.grey[300]
+                                  : Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 27,
+                              letterSpacing: 1)),
                   const SizedBox(
                     height: 15,
                   ),
                   Text(
-                    "Last Edited : ${controller.notes[i].dateTimeEdited}",
+                    "18".tr+controller.notes[i].dateTimeEdited.toString(),
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -202,9 +203,9 @@ class NoteDetailPage extends StatelessWidget {
                   ),
                   SelectableText(
                     controller.notes[i].content!,
-                    style: const TextStyle(
-                      fontSize: 22,
-                    ),
+                    style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                        color: Get.isDarkMode ? Colors.grey[300] : Colors.black,
+                        fontWeight: FontWeight.normal),
                   ),
                   const SizedBox(
                     height: 10,

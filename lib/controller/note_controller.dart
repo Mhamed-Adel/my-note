@@ -6,8 +6,13 @@ import 'package:string_stats/string_stats.dart';
 
 import '../database/database_helper.dart';
 import '../model/notes.dart';
+import '../services/themes_services.dart';
 
 class NoteController extends GetxController {
+ RxBool isDarkMode =ThemeHelper().getThemeMode().obs;
+
+
+
   final titleController = TextEditingController();
   final contentController = TextEditingController();
 
@@ -34,7 +39,7 @@ class NoteController extends GetxController {
     String title = titleController.text;
     String content = contentController.text;
     if (title.isBlank!) {
-      title = "No Title";
+      title = "19".tr;
     }
     Note note = Note(
       title: title,

@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:my_note/services/locale/lacale_controller.dart';
+import 'package:my_note/services/services.dart';
 import 'package:my_note/services/themes_services.dart';
 
 import '../controller/note_controller.dart';
@@ -15,7 +17,8 @@ import 'note_detail.dart';
 
 class HomePage extends StatelessWidget {
   final controller = Get.put(NoteController());
-
+  final langController = Get.find<ChangeLocal>();
+  MyServices myServices = Get.find();
   HomePage({super.key});
 
   Widget emptyNotes(context) {
@@ -25,15 +28,29 @@ class HomePage extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Lottie.asset('assets/making-notes.json',)),
-          const SizedBox(height: 50,),
            Expanded(
             flex: 1,
-            child: Text(
-              
-              "You don't have any Notes",
-              textAlign: TextAlign.center,
-              style:Theme.of(context).textTheme.displaySmall,
+            child: Column(
+              children: [
+                Text(
+                  
+                  "22".tr,
+                  textAlign: TextAlign.center,
+                  style:Theme.of(context).textTheme.displaySmall!.copyWith(
+                    fontSize: 25,
+          
+          fontWeight: FontWeight.w500,
+                  ),
+                ),
+                  Text('23'.tr,
+                style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400
+                ),
+                )
+              ],
             ),
+
           ),
         ],
 
@@ -71,7 +88,7 @@ class HomePage extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return AlertDialogWidget(
-                        contentText: "Are you sure you want to delete the note?",
+                        contentText: "8".tr,
                         confirmFunction: () {
                           controller.deleteNote(controller.notes[index].id!);
                           Get.back();
@@ -141,12 +158,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          ThemeHelper().switchTheme();
-        }, icon:Icon(Get.isDarkMode?Icons.light_mode  :Icons.dark_mode)),
         
-        title: const Text(
-          "Home",
+        title:  Text(
+          "1".tr,
           
         ),
         centerTitle: true,
@@ -162,10 +176,11 @@ class HomePage extends StatelessWidget {
             onSelected: (val) {
               if (val == 0) {
                 showDialog(
+
                   context: context,
                   builder: (context) {
                     return AlertDialogWidget(
-                      contentText: "Are you sure you want to delete all notes?",
+                      contentText: "8".tr,
                       confirmFunction: () {
                         controller.deleteAllNotes();
                         Get.back();
@@ -177,13 +192,66 @@ class HomePage extends StatelessWidget {
                   },
                 );
               }
+              else if(val == 1){
+               Get.defaultDialog(
+                backgroundColor: Get.isDarkMode ? Color.fromARGB(255, 71, 71, 71):Colors.grey[300],
+                title: '4'.tr,
+                content: Obx(
+        () => Column(
+          children: [
+            SwitchListTile(
+              title:  Text('6'.tr),
+              activeColor: Colors.teal,
+              value: controller.isDarkMode.value, onChanged: (value){
+             controller.isDarkMode.value = value;
+             ThemeHelper().switchTheme();
+            }),
+           ListTile(
+            title:Text('7'.tr),
+            trailing: PopupMenuButton(
+              icon: const Icon(Icons.arrow_drop_down),
+              position: PopupMenuPosition.under,
+              
+              onSelected: (value) {
+                if(value == 0){
+              langController.changeLocal('ar');
+              
+                }else if(value == 1){
+                langController.changeLocal('en');
+                }
+              },
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                value: 0,
+                child:Text('عربي')
+                  ),
+                const PopupMenuItem(
+                value: 1,
+                child: Text('English')
+              ),
+              ],),
+           )
+          ],
+        ),
+      )
+               );
+              }
             },
             itemBuilder: (context) => [
-              const PopupMenuItem(
+               PopupMenuItem(
                 value: 0,
                 child: Text(
-                  "Delete All Notes",
-                  style: TextStyle(
+                  "5".tr,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+               PopupMenuItem(
+                value: 1,
+                child: Text(
+                  "4".tr,
+                  style:const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -202,9 +270,9 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           Get.to(()=>AddNewNotePage());
         },
-        child: const Icon(
+        child:  Icon(
           Icons.note_alt_outlined,
-          size: 30,
+          color: Colors.grey[200],
         ),
       ),
     );

@@ -16,15 +16,10 @@ class EditNotePage extends StatelessWidget {
     controller.contentController.text = controller.notes[i].content!;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(
-          color: Colors.black,
-        ),
-        title: const Text(
-          "Edit Note",
-          style: TextStyle(
-            color: Colors.black,
-          ),
+        
+        title:  Text(
+          "12".tr,
+          
         ), systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: SingleChildScrollView(
@@ -43,7 +38,7 @@ class EditNotePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
                 decoration: InputDecoration(
-                  hintText: "Title",
+                  hintText: "10".tr,
                   hintStyle: TextStyle(
                     fontSize: 27,
                     fontWeight: FontWeight.bold,
@@ -58,9 +53,9 @@ class EditNotePage extends StatelessWidget {
                   fontSize: 22,
                 ),
                 controller: controller.contentController,
-                decoration: const InputDecoration(
-                  hintText: "Content",
-                  hintStyle: TextStyle(
+                decoration:  InputDecoration(
+                  hintText: "11".tr,
+                  hintStyle:const TextStyle(
                     fontSize: 17,
                   ),
                   border: InputBorder.none,

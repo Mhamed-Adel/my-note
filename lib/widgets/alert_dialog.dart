@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AlertDialogWidget extends StatelessWidget {
   final String? contentText;
@@ -20,11 +21,18 @@ class AlertDialogWidget extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: declineFunction,
-          child: const Text("No"),
+          child:  Text("21".tr,
+          style: const TextStyle(
+            fontSize: 18
+          ),),
         ),
         TextButton(
           onPressed: confirmFunction,
-          child: const Text("Yes"),
+          child:  Text("20".tr,
+          style: const TextStyle(
+            fontSize: 18
+          ),
+          ),
         ),
       ],
     );
