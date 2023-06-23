@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controller/note_controller.dart';
 import '../widgets/alert_dialog.dart';
@@ -17,7 +18,7 @@ class NoteDetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('12'.tr),
+        title: Text('12'.tr,style: GoogleFonts.almarai()),
         actions: [
           IconButton(
             icon: const Icon(
@@ -171,17 +172,16 @@ class NoteDetailPage extends StatelessWidget {
             ),
             child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(
                     height: 10,
                   ),
                   SelectableText(controller.notes[i!].title!,
-                      style: Theme.of(context)
-                          .textTheme
-                          .headlineMedium!.copyWith(
-                            fontWeight: FontWeight.bold,
-                          )),
+                      style: GoogleFonts.almarai(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      )),
                   const SizedBox(
                     height: 15,
                   ),
@@ -198,7 +198,10 @@ class NoteDetailPage extends StatelessWidget {
                   ),
                   SelectableText(
                     controller.notes[i].content!,
-                    style: Theme.of(context).textTheme.headlineSmall!
+                    style: GoogleFonts.almarai(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500
+                      )
                   ),
                   const SizedBox(
                     height: 10,

@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeHelper().dark,
       themeMode: ThemeHelper().theme,
       locale:intialLang ,
+      
       translations: Localization(),
       home:  HomePage(),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../controller/note_controller.dart';
 
 
@@ -19,8 +20,11 @@ class EditNotePage extends StatelessWidget {
         
         title:  Text(
           "12".tr,
-          
-        ), systemOverlayStyle: SystemUiOverlayStyle.dark,
+          style: GoogleFonts.almarai(
+                        
+                      ),
+        ),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -33,10 +37,10 @@ class EditNotePage extends StatelessWidget {
             children: [
               TextField(
                 controller: controller.titleController,
-                style: const TextStyle(
-                  fontSize: 27,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: GoogleFonts.almarai(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold
+                      ),
                 decoration: InputDecoration(
                   hintText: "10".tr,
                   hintStyle: TextStyle(
@@ -49,9 +53,10 @@ class EditNotePage extends StatelessWidget {
                 ),
               ),
               TextField(
-                style: const TextStyle(
-                  fontSize: 22,
-                ),
+                style: GoogleFonts.almarai(
+                        fontSize: 22,
+                        
+                      ),
                 controller: controller.contentController,
                 decoration:  InputDecoration(
                   hintText: "11".tr,

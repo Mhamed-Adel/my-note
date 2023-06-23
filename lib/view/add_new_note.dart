@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controller/note_controller.dart';
 
@@ -15,7 +16,7 @@ class AddNewNotePage extends StatelessWidget {
       appBar: AppBar(
         title:  Text(
           "9".tr,
-          
+          style: GoogleFonts.almarai()
         ),
        
       ),
@@ -30,10 +31,19 @@ class AddNewNotePage extends StatelessWidget {
             children: [
               TextField(
                 controller: controller.titleController,
-                style: Theme.of(context).textTheme.headlineMedium,
+                style: GoogleFonts.almarai(
+                  fontSize: 27,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1
+                ),
                 decoration: InputDecoration(
                   hintText: "10".tr,
-                   hintStyle: Theme.of(context).textTheme.headlineMedium!,
+                  hintStyle: GoogleFonts.almarai(
+                    fontSize: 27,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1
+                  ),
+                  
                    //TextStyle(
                   //   fontSize: 27,
                   //   fontWeight: FontWeight.bold,
@@ -50,13 +60,13 @@ class AddNewNotePage extends StatelessWidget {
               ),
               TextField(
                 
-                style: const TextStyle(
-                  fontSize: 22,
+                style: GoogleFonts.almarai(
+                  fontSize: 20
                 ),
                 controller: controller.contentController,
                 decoration:  InputDecoration(
                   hintText: "11".tr,
-                  hintStyle: Theme.of(context).textTheme.headlineSmall!,
+                  hintStyle:  GoogleFonts.almarai(fontSize: 20),
                   border: InputBorder.none,
                 ),
                 keyboardType: TextInputType.multiline,

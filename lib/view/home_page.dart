@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:my_note/services/locale/lacale_controller.dart';
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget {
         
         title:  Text(
           "1".tr,
-          
+          style: GoogleFonts.almarai(),
         ),
         centerTitle: true,
         
@@ -49,6 +50,7 @@ class HomePage extends StatelessWidget {
                   builder: (context) {
                     return AlertDialogWidget(
                       contentText: "8".tr,
+                      
                       confirmFunction: () {
                         controller.deleteAllNotes();
                         Get.back();
@@ -63,21 +65,23 @@ class HomePage extends StatelessWidget {
               else if(val == 1){
                Get.defaultDialog(
                 
+                titleStyle: GoogleFonts.almarai(),
                 title: '4'.tr,
                 content: Obx(
         () => Column(
           children: [
             SwitchListTile(
-              title:  Text('6'.tr),
+              
+              title:  Text('6'.tr,style: GoogleFonts.almarai(),),
               activeColor: Colors.teal,
               value: controller.isDarkMode.value, onChanged: (value){
              controller.isDarkMode.value = value;
              ThemeHelper().switchTheme();
             }),
            ListTile(
-            title:Text('7'.tr),
+            title:Text('7'.tr,style: GoogleFonts.almarai()),
             trailing: PopupMenuButton(
-              icon:  Icon(Icons.arrow_drop_down,
+              icon:  const Icon(Icons.arrow_drop_down,
               color: Colors.grey,
               ),
               position: PopupMenuPosition.under,
@@ -91,9 +95,9 @@ class HomePage extends StatelessWidget {
                 }
               },
               itemBuilder: (context) => [
-                const PopupMenuItem(
+                PopupMenuItem(
                 value: 0,
-                child:Text('عربي')
+                child:Text('عربي',style: GoogleFonts.almarai())
                   ),
                 const PopupMenuItem(
                 value: 1,
@@ -103,7 +107,7 @@ class HomePage extends StatelessWidget {
            )
           ],
         ),
-      )
+      ),
                );
               }
             },
@@ -112,25 +116,21 @@ class HomePage extends StatelessWidget {
                 value: 0,
                 child: Text(
                   "5".tr,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: GoogleFonts.almarai(),
                 ),
               ),
                PopupMenuItem(
                 value: 1,
                 child: Text(
                   "4".tr,
-                  style:const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: GoogleFonts.almarai(),
                 ),
               ),
               
             ],
           ),
         ], 
-        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        
       ),
       
       
@@ -183,7 +183,7 @@ class ViewNotes extends StatelessWidget {
 
             staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
             itemBuilder: (context, index) {
-              return GestureDetector(
+              return InkWell(
                 
                 onTap: () {
                   //todo go to other page with index
@@ -193,11 +193,13 @@ class ViewNotes extends StatelessWidget {
                   );
                 },
                 onLongPress: () {
+
                   showDialog(
                     context: context,
                     builder: (context) {
                       return AlertDialogWidget(
                         contentText: "8".tr,
+                        
                         confirmFunction: () {
                           controller.deleteNote(controller.notes[index].id!);
                           Get.back();
@@ -209,50 +211,51 @@ class ViewNotes extends StatelessWidget {
                     },
                   );
                 },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Get.isDarkMode ? Colors.white:Colors.grey[300],
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        //todo add note(title) from index
-                        controller.notes[index].title!,
-                        style:  const TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.bold,
-                          color:  Colors.black
+                child: Obx(
+                  ()=> Container(
+                    decoration: BoxDecoration(
+                      color: controller.isDarkMode.value ? Colors.black:Colors.grey[300],
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          //todo add note(title) from index
+                          controller.notes[index].title!,
+                          style: GoogleFonts.almarai(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: false,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        softWrap: false,
-                      ),
-                      const Divider(),
-                      
-                      Text(
-                        //todo add note(content) from index
-                        controller.notes[index].content!,
-                        style:  const TextStyle(
-                          fontSize: 17,
-                          color:   Colors.black,
+                        const Divider(),
+                        
+                        Text(
+                          //todo add note(content) from index
+                          controller.notes[index].content!,
+                          style: GoogleFonts.almarai(
+                            fontSize: 16
+                          ),
+                          maxLines: 6,
                         ),
-                        maxLines: 6,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        //todo add note(date time) from index
-                        controller.notes[index].dateTimeEdited!,
-                        style: const TextStyle(
-                          color: Colors.black54
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                    ],
+                        Text(
+                          //todo add note(date time) from index
+                          controller.notes[index].dateTimeEdited!,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w300,
+
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
@@ -287,16 +290,14 @@ class EmptyNotes extends StatelessWidget {
                   
                   "22".tr,
                   textAlign: TextAlign.center,
-                  style:Theme.of(context).textTheme.displaySmall!.copyWith(
-                    fontSize: 25,
-          
-          fontWeight: FontWeight.w500,
+                  style: GoogleFonts.almarai(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold
                   ),
                 ),
                   Text('23'.tr,
-                style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                style: GoogleFonts.almarai(
                   fontSize: 16,
-                  fontWeight: FontWeight.w400
                 ),
                 )
               ],

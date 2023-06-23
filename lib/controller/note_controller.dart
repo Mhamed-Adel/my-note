@@ -13,6 +13,7 @@ class NoteController extends GetxController {
 
 
 
+
   final titleController = TextEditingController();
   final contentController = TextEditingController();
 
