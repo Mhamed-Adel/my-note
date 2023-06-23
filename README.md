@@ -31,6 +31,8 @@ Note app using GetX and local database (sqflite) can add note and remove it can 
 - [✅] Search about notes
 - [✅] Last Update of Note
 - [✅] Date Time Created of Note
+- [✅] Dark and Light Theme
+- [✅] multi language (Arabic and English)
 
 # snapshots
 <div>
