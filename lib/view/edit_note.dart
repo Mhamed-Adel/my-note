@@ -35,39 +35,8 @@ class EditNotePage extends StatelessWidget {
           ),
           child: Column(
             children: [
-              TextField(
-                controller: controller.titleController,
-                style: GoogleFonts.almarai(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold
-                      ),
-                decoration: InputDecoration(
-                  hintText: "10".tr,
-                  hintStyle: TextStyle(
-                    fontSize: 27,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[600],
-                    letterSpacing: 1,
-                  ),
-                  border: InputBorder.none,
-                ),
-              ),
-              TextField(
-                style: GoogleFonts.almarai(
-                        fontSize: 22,
-                        
-                      ),
-                controller: controller.contentController,
-                decoration:  InputDecoration(
-                  hintText: "11".tr,
-                  hintStyle:const TextStyle(
-                    fontSize: 17,
-                  ),
-                  border: InputBorder.none,
-                ),
-                keyboardType: TextInputType.multiline,
-                maxLines: null,
-              ),
+              TitleWidget(controller: controller),
+              ContentWidget(controller: controller),
             ],
           ),
         ),
@@ -78,6 +47,65 @@ class EditNotePage extends StatelessWidget {
               controller.notes[i].id!, controller.notes[i].dateTimeCreated!);
         },
         child: const Icon(Icons.save),
+      ),
+    );
+  }
+}
+
+class ContentWidget extends StatelessWidget {
+  const ContentWidget({
+    super.key,
+    required this.controller,
+  });
+
+  final NoteController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      style: GoogleFonts.almarai(
+              fontSize: 22,
+              
+            ),
+      controller: controller.contentController,
+      decoration:  InputDecoration(
+        hintText: "11".tr,
+        hintStyle:const TextStyle(
+          fontSize: 17,
+        ),
+        border: InputBorder.none,
+      ),
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+    );
+  }
+}
+
+class TitleWidget extends StatelessWidget {
+  const TitleWidget({
+    super.key,
+    required this.controller,
+  });
+
+  final NoteController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller.titleController,
+      style: GoogleFonts.almarai(
+              fontSize: 24,
+              fontWeight: FontWeight.bold
+            ),
+      decoration: InputDecoration(
+        hintText: "10".tr,
+        hintStyle: TextStyle(
+          fontSize: 27,
+          fontWeight: FontWeight.bold,
+          color: Colors.grey[600],
+          letterSpacing: 1,
+        ),
+        border: InputBorder.none,
       ),
     );
   }

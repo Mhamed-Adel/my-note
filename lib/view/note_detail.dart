@@ -36,129 +36,7 @@ class NoteDetailPage extends StatelessWidget {
               Icons.more_vert,
             ),
             onPressed: () {
-              Get.bottomSheet(
-                backgroundColor: Get.isDarkMode
-                    ? const Color.fromARGB(137, 107, 106, 106)
-                    : Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16)),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: TextButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialogWidget(
-                                contentText:
-                                    "13".tr,
-                                    
-                                confirmFunction: () {
-                                  controller
-                                      .deleteNote(controller.notes[i!].id!);
-                                  Get.offAll(()=>HomePage());
-                                },
-                                declineFunction: () {
-                                  Get.back();
-                                },
-                              );
-                            },
-                          );
-                        },
-                        child:  Row(
-                          children: [
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            const Icon(
-                              Icons.delete,
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              "14".tr,
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: TextButton(
-                        onPressed: () {
-                          controller.shareNote(
-                            controller.notes[i!].title!,
-                            controller.notes[i].content!,
-                          );
-                        },
-                        child:  Row(
-                          children: [
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            const Icon(
-                              Icons.share,
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              "15".tr,
-                              style: const TextStyle(
-                                fontSize: 20,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 20,
-                        top: 10,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Created :  ${controller.notes[i!].dateTimeCreated!}",
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(fontSize: 20),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                            '16'.tr+controller.contentWordCount.toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(fontSize: 18),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Text(
-                              "17".tr+controller.contentCharCount.toString(),
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall!
-                                  .copyWith(fontSize: 18)),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              );
+              bottomSheetWidget(context, i);
             },
           ),
         ],
@@ -213,5 +91,134 @@ class NoteDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+
+
+  void bottomSheetWidget(BuildContext context, int? i) {
+    Get.bottomSheet(
+      backgroundColor: Get.isDarkMode
+          ? const Color.fromARGB(137, 107, 106, 106)
+          : Colors.white,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16)),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            child: TextButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialogWidget(
+                      contentText:
+                          "13".tr,
+                          
+                      confirmFunction: () {
+                        controller
+                            .deleteNote(controller.notes[i!].id!);
+                        Get.offAll(()=>HomePage());
+                      },
+                      declineFunction: () {
+                        Get.back();
+                      },
+                    );
+                  },
+                );
+              },
+              child:  Row(
+                children: [
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Icon(
+                    Icons.delete,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "14".tr,
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: TextButton(
+              onPressed: () {
+                controller.shareNote(
+                  controller.notes[i!].title!,
+                  controller.notes[i].content!,
+                );
+              },
+              child:  Row(
+                children: [
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  const Icon(
+                    Icons.share,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "15".tr,
+                    style: const TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              top: 10,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Created :  ${controller.notes[i!].dateTimeCreated!}",
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 20),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  '16'.tr+controller.contentWordCount.toString(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 18),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Text(
+                    "17".tr+controller.contentCharCount.toString(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .displaySmall!
+                        .copyWith(fontSize: 18)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+      
   }
 }
